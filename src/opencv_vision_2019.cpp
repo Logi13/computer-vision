@@ -1,7 +1,4 @@
 ﻿// opencv_vision.cpp : Defines the entry point for the application.
-//
-
-#include "opencv_vision_2019.h"
 
 #include<iostream>
 #include<opencv2/highgui/highgui.hpp>
@@ -34,7 +31,7 @@ int main()
             Point center(faces[i].x + faces[i].width * 0.5, faces[i].y + faces[i].height * 0.5);//getting the center of the face//
             ellipse(frame, center, Size(faces[i].width * 0.5, faces[i].height * 0.5), 0, 0, 360, Scalar(255, 0, 255), 4, 8, 0);//draw an ellipse on the face//
             Mat faceROI = frame(faces[i]);//Taking area of the face as Region of Interest for eyes//
-            vector eyes;//declaring a vector named eyes//
+            vector<Rect> eyes;//declaring a vector named eyes//
             eyes_cascade.detectMultiScale(faceROI, eyes, 1.1, 2, 0 | CASCADE_SCALE_IMAGE, Size(5, 5));//detect eyes in every face//
             for (size_t j = 0; j < eyes.size(); j++) { //for locating eyes//
                 Point center(faces[i].x + eyes[j].x + eyes[j].width * 0.5, faces[i].y + eyes[j].y + eyes[j].height * 0.5);//getting the centers of both eyes//
